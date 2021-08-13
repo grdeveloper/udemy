@@ -1,0 +1,13 @@
+:host {
+  position: relative;
+  display: block;
+
+  .header {
+    position: absolute;
+    z-index: 2;
+  }
+
+  .content {
+    margin-top: 100px;
+  }
+}

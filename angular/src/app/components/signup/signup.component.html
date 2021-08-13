@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div fxFlex fxLayout="column" fxLayoutAlign="center">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" autocomplete="off" />
+      <mat-error *ngIf="form.hasError('required', 'username')">
+        Username field is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" autocomplete="off" />
+      <mat-error *ngIf="form.hasError('required', 'password')">
+        Password field is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Repeat Password</mat-label>
+      <input matInput formControlName="repeatPassword" autocomplete="off" />
+      <mat-error *ngIf="form.hasError('notSame', 'repeatPassword')">
+        Passwords do not match
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Sign Up</button>
+  </div>
+</form>

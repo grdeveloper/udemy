@@ -1,0 +1,11 @@
+<div fxLayout="column" fxLayoutGap="30px">
+  <app-add-blog (addNewBlog)="addNewBlog()"></app-add-blog>
+  <div fxLayout="column" fxLayoutGap="30px">
+    <app-blog-card
+      [blog]="blog"
+      *ngFor="let blog of blogs"
+      (editBlog)="editBlog($event)"
+      (deleteBlog)="deleteBlog($event)"
+    ></app-blog-card>
+  </div>
+</div>
