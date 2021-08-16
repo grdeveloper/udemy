@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Blog} from '../../common/dto.common';
+import {BlogInfo} from '../../common/dto.common';
 
 @Component({
   selector: 'app-blogs',
@@ -8,7 +8,7 @@ import {Blog} from '../../common/dto.common';
 })
 export class BlogsComponent implements OnInit {
 
-  blogs: Array<Blog> = [
+  blogs: Array<BlogInfo> = [
     {
       id: '1',
       title: 'title 1',

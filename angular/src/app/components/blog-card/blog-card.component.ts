@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Blog} from '../../common/dto.common';
+import {BlogInfo} from '../../common/dto.common';
 
 @Component({
   selector: 'app-blog-card',
@@ -8,7 +8,7 @@ import {Blog} from '../../common/dto.common';
   ]
 })
 export class BlogCardComponent implements OnInit {
-  @Input() blog: Blog = {} as Blog;
+  @Input() blog: BlogInfo = {} as BlogInfo;
 
   @Output() editBlog = new EventEmitter<{id: string}>();
   @Output() deleteBlog = new EventEmitter<{id: string}>();

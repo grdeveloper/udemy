@@ -16,6 +16,7 @@ import { BlogCardComponent } from './blog-card/blog-card.component';
 import { ProcessImageComponent } from './process-image/process-image.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { BlogFormComponent } from './blog-form/blog-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
     AddBlogComponent,
     BlogCardComponent,
     ProcessImageComponent,
+    BlogFormComponent
   ],
   exports: [
     FlexLayoutModule,
@@ -32,7 +34,8 @@ import {MatIconModule} from '@angular/material/icon';
     SigninComponent,
     AddBlogComponent,
     BlogCardComponent,
-    ProcessImageComponent
+    ProcessImageComponent,
+    BlogFormComponent
   ],
   imports: [
     RouterModule,

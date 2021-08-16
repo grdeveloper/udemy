@@ -28,7 +28,8 @@ export const App: React.FC = () => {
                     {
                         user
                             ? (
-                                <Header username={user.username} logout={logout}>
+                                <Grid container direction="column">
+                                    <Header username={user.username} logout={logout} />
                                     <Switch>
                                         <Route exact path="/blogs" component={() => (
                                             <LazyState loadState={blogsState}>
@@ -42,7 +43,7 @@ export const App: React.FC = () => {
                                         )} />
                                         <Route component={(): React.ReactElement => <Redirect to="/blogs" />} />
                                     </Switch>
-                                </Header>
+                                </Grid>
                             )
                             : (
                                 <Switch>

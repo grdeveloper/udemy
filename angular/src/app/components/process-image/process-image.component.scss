@@ -1,0 +1,17 @@
+:host {
+  position: relative;
+  min-width: 400px;
+  min-height: 300px;
+
+  .absolute {
+    position: absolute;
+    top: 0;
+    opacity: 0.3;
+    background: rgba(167, 47, 199, 0.1);
+    transition: opacity .3s ease;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}

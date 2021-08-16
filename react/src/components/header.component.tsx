@@ -2,7 +2,7 @@ import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import {Box, Button, Divider, Typography } from '@material-ui/core';
 
-export const Header: React.FC<HeaderProps> = ({username, logout, children}) => (
+export const Header: React.FC<HeaderProps> = ({username, logout}) => (
     <Grid container direction="column">
         <Box pt={1} pb={1}>
             <Grid container justify="flex-end">
@@ -16,12 +16,10 @@ export const Header: React.FC<HeaderProps> = ({username, logout, children}) => (
             </Grid>
         </Box>
         <Divider />
-        {children}
     </Grid>
 );
 
 interface HeaderProps {
     username: string;
     logout(token: {token: string}): void;
-    children: React.ReactNode;
 }

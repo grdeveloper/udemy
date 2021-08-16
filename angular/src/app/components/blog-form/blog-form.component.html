@@ -1,0 +1,22 @@
+<mat-card>
+  <form [formGroup]="form" (ngSubmit)="submitForm()" fxLayoutGap="30px" novalidate>
+    <app-process-image formControlName="imageUrl"></app-process-image>
+    <div fxFlex fxLayout="column" fxLayoutAlign="space-evenly">
+      <mat-form-field appearance="outline">
+        <mat-label>Blog title</mat-label>
+        <input matInput formControlName="title" autocomplete="off" />
+        <mat-error *ngIf="form.hasError('required', 'title')">
+          Title field is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Blog content</mat-label>
+        <input matInput formControlName="blog" autocomplete="off" />
+        <mat-error *ngIf="form.hasError('required', 'blog')">
+          Blog field is required
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" [disabled]="form.invalid">Save</button>
+    </div>
+  </form>
+</mat-card>
