@@ -1,16 +1,20 @@
 <mat-card>
   <div fxFlex fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="50px">
-    <img height="300" [src]="blog.imageUrl" alt="">
+    <img height="300" [src]="fileUrl + blog.imageUrl" alt="">
     <div fxFlex fxLayout="column" fxLayoutAlign="start center">
       <mat-card-header>
         <mat-card-title>{{blog.title}}</mat-card-title>
-        <mat-card-subtitle>{{blog.user.username}}</mat-card-subtitle>
+        <mat-card-subtitle>{{blog.user?.username}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>{{blog.blog}}</mat-card-content>
     </div>
   </div>
   <mat-card-actions fxLayout="column" fxLayoutAlign="center" fxLayoutGap="15px">
-    <button mat-fab color="primary" (click)="onBlogEdit()"><mat-icon>edit</mat-icon></button>
-    <button mat-fab color="accent" (click)="onBlogDelete()"><mat-icon>delete_outline</mat-icon></button>
+    <button mat-fab color="primary" (click)="onBlogEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-fab color="accent" (click)="onBlogDelete()" [disabled]="!isBlogAuthor">
+      <mat-icon>delete_outline</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

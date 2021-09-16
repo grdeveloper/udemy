@@ -12,7 +12,7 @@ import {ComponentsModule} from '../../components/components.module';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ComponentsModule
+    ComponentsModule,
   ],
 })
 export class AuthModule { }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/common/dto.common';
+import {AuthService} from "../../services/auth.service";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public user$: BehaviorSubject<User | null> = this.authService.appUser$;
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  logout() {
+    this.authService.decodeAndSetToken(null);
   }
 
 }

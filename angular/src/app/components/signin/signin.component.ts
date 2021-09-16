@@ -9,6 +9,7 @@ import {UserCredentials} from '../../common/dto.common';
 export class SigninComponent implements OnInit {
   @Output() signin = new EventEmitter<UserCredentials>();
 
+  hidePassword = true;
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {

@@ -1,8 +1,8 @@
 <div fxLayout="column">
   <mat-toolbar color="primary" class="header">
     <div fxFlex fxLayoutAlign="end center" fxLayoutGap="20px">
-      <span>user</span>
-      <button mat-raised-button color="accent">Log out</button>
+      <span>{{(user$ | async)?.username}}</span>
+      <button mat-raised-button color="accent" type="button" (click)="logout()">Log out</button>
     </div>
   </mat-toolbar>
   <div class="content">

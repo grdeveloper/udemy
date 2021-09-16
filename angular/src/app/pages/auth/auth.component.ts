@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserCredentials} from '../../common/dto.common';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-auth',
@@ -8,16 +9,15 @@ import {UserCredentials} from '../../common/dto.common';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSignUp(signUpForm: UserCredentials): void {
-    console.log('signUp', signUpForm);
+    this.authService.signup(signUpForm);
   }
 
   onSignIn(signInForm: UserCredentials): void {
-    console.log('signIn', signInForm);
+    this.authService.signin(signInForm);
   }
 }

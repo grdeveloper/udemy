@@ -2,11 +2,11 @@
   <img width="400" height="300" [src]="image" alt="">
 </ng-container>
 <input type="file" hidden #imageEl />
-<div class="absolute" fxFill fxLayoutAlign="center center" fxLayoutGap="30px">
-  <button mat-fab color="primary" (click)="imageEl.click()">
+<div class="absolute" fxFill fxLayoutAlign="center center" fxLayoutGap="30px" *ngIf="!disableButtons">
+  <button mat-fab color="primary" type="button" (click)="imageEl.click()">
     <mat-icon>edit</mat-icon>
   </button>
-  <button mat-fab color="accent" (click)="removeImage()">
+  <button mat-fab color="accent" type="button" (click)="removeImage()">
     <mat-icon>delete_outline</mat-icon>
   </button>
 </div>

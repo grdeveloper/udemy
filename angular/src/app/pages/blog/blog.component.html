@@ -1,4 +1,6 @@
 <app-blog-form
+  [blog]="blog$ | async"
+  [disabled]="disabled$ | async"
   (createBlog)="onCreateBlog($event)"
   (updateBlog)="onUpdateBlog($event)"
 ></app-blog-form>

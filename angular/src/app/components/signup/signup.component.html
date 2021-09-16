@@ -9,14 +9,20 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input matInput formControlName="password" autocomplete="off" />
+      <input matInput formControlName="password" autocomplete="off" [type]="hidePassword ? 'password' : 'text'" />
+      <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error *ngIf="form.hasError('required', 'password')">
         Password field is required
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Repeat Password</mat-label>
-      <input matInput formControlName="repeatPassword" autocomplete="off" />
+      <input matInput formControlName="repeatPassword" autocomplete="off" [type]="hideRepeatPassword ? 'password' : 'text'" />
+      <button mat-icon-button matSuffix type="button" (click)="hideRepeatPassword = !hideRepeatPassword">
+        <mat-icon>{{hideRepeatPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error *ngIf="form.hasError('notSame', 'repeatPassword')">
         Passwords do not match
       </mat-error>

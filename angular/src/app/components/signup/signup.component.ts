@@ -9,6 +9,8 @@ import {UserCredentials} from '../../common/dto.common';
 export class SignupComponent implements OnInit {
   @Output() signup = new EventEmitter<UserCredentials>();
 
+  hidePassword = true;
+  hideRepeatPassword = true;
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {

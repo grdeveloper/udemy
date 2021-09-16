@@ -1,5 +1,6 @@
-import {Component, ElementRef, HostListener, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-process-image',
@@ -13,8 +14,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     }
   ]
 })
-export class ProcessImageComponent implements ControlValueAccessor {
+export class ProcessImageComponent implements ControlValueAccessor, OnInit {
   @Input() image: string = '';
+  @Input() disableButtons: boolean = false;
 
   @HostListener('change', ['$event.target.files']) onSelectImage(fileList: FileList): void {
     const reader = new FileReader();
@@ -32,8 +34,13 @@ export class ProcessImageComponent implements ControlValueAccessor {
 
   constructor() { }
 
+  ngOnInit() {
+    this.image && (this.image = environment.baseFileUrl + this.image);
+  }
+
   removeImage(): void {
     this.image = '';
+    this.fileInput!.nativeElement.value = '';
     this.onChange(null);
   }
 

@@ -9,7 +9,10 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input matInput formControlName="password" autocomplete="off" />
+      <input matInput formControlName="password" autocomplete="off" [type]="hidePassword ? 'password' : 'text'" />
+      <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error *ngIf="form.hasError('required', 'password')">
         Password field is required
       </mat-error>

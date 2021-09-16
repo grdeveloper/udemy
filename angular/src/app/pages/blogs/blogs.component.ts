@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {BlogInfo} from '../../common/dto.common';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BehaviorSubject, Observable} from "rxjs";
+import {BlogInfo, User} from '../../common/dto.common';
+import {BlogsService} from "../../services/blogs.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-blogs',
@@ -7,43 +11,29 @@ import {BlogInfo} from '../../common/dto.common';
   styleUrls: ['./blogs.component.scss']
 })
 export class BlogsComponent implements OnInit {
+  public user$: BehaviorSubject<User | null> = this.authService.appUser$;
+  public blogs$: Observable<Array<BlogInfo>> = this.blogsService.blogs$;
 
-  blogs: Array<BlogInfo> = [
-    {
-      id: '1',
-      title: 'title 1',
-      blog: 'Lorem kjhdf ksjhdfkjdshfkjsdhf kjs dhfkjhsdk jfhskjf hksjhf k sdkjfh skdjhf jsd fhkjsdhf ksjhf jshdf kjhskdj fh',
-      imageUrl: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg',
-      user: {
-        id: '1',
-        username: 'John'
-      }
-    },
-    {
-      id: '2',
-      title: 'title 2',
-      blog: 'blog 2 sjdhfkjsh fkjdshfk jsdhf kjdshf kjdshf kjdshf kjjkshdf kjs fhkdjshfkjs dhfkjdshfkjsd fkjhssdhf kjdsh fkjd shfkjs hdfkjhf',
-      imageUrl: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg',
-      user: {
-        id: '2',
-        username: 'Kevin'
-      }
-    }
-  ];
+  constructor(
+    private authService: AuthService,
+    private blogsService: BlogsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.blogsService.getBlogs();
+  }
 
   addNewBlog(): void {
-    console.log('new');
+    this.router.navigate(["new"], {relativeTo: this.activatedRoute});
   }
 
-  editBlog(blog: {id: string}): void {
-    console.log(blog);
+  editBlog(blogId: {id: string}): void {
+    this.router.navigate([blogId.id], {relativeTo: this.activatedRoute});
   }
 
-  deleteBlog(blog: {id: string}): void {
-    console.log(blog);
+  deleteBlog(blogId: {id: string}): void {
+    this.blogsService.deleteBlog(blogId.id);
   }
 }

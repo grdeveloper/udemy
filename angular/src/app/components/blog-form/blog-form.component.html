@@ -1,6 +1,10 @@
 <mat-card>
   <form [formGroup]="form" (ngSubmit)="submitForm()" fxLayoutGap="30px" novalidate>
-    <app-process-image formControlName="imageUrl"></app-process-image>
+    <app-process-image
+      [disableButtons]="disabled"
+      formControlName="imageUrl"
+      [image]="blog?.imageUrl || ''"
+    ></app-process-image>
     <div fxFlex fxLayout="column" fxLayoutAlign="space-evenly">
       <mat-form-field appearance="outline">
         <mat-label>Blog title</mat-label>
@@ -16,7 +20,7 @@
           Blog field is required
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="accent" [disabled]="form.invalid">Save</button>
+      <button mat-raised-button color="accent" [disabled]="form.invalid || disabled">Save</button>
     </div>
   </form>
 </mat-card>

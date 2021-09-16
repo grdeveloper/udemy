@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HeaderComponent} from './components/header/header.component';
+import {AuthGuard} from "./common/authguard.common";
 
 const routes: Routes = [
   {
@@ -14,14 +15,12 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
+        canLoad: [AuthGuard],
         loadChildren: () => import('./pages/blogs/blogs.module').then(m => m.BlogsModule)
       },
       {
-        path: 'new',
-        loadChildren: () => import('./pages/blog/blog.module').then(m => m.BlogModule)
-      },
-      {
-        path: ':blogId',
+        path: '',
+        canLoad: [AuthGuard],
         loadChildren: () => import('./pages/blog/blog.module').then(m => m.BlogModule)
       }
     ]

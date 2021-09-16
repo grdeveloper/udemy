@@ -2,8 +2,9 @@
   <app-add-blog (addNewBlog)="addNewBlog()"></app-add-blog>
   <div fxLayout="column" fxLayoutGap="30px">
     <app-blog-card
+      *ngFor="let blog of blogs$ | async"
       [blog]="blog"
-      *ngFor="let blog of blogs"
+      [isBlogAuthor]="blog.user.id === (user$ | async)?.id"
       (editBlog)="editBlog($event)"
       (deleteBlog)="deleteBlog($event)"
     ></app-blog-card>
